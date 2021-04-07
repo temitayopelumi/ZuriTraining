@@ -152,7 +152,8 @@ def LandingPage():
     else:
         print('Please select a valid option')
 
-LandingPage()
+if __name__ == '__main__':
+    LandingPage()
 
         
 
