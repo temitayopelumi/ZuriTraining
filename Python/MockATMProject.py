@@ -4,7 +4,7 @@ import pickle
 from datetime import datetime
 from random import randint
 
-accountno=[89765345,  45788643, 65754357, 445895635]
+
 
 
 def loadDatabase(filename):
@@ -152,7 +152,8 @@ def LandingPage():
     else:
         print('Please select a valid option')
 
-LandingPage()
+if __name__ == '__main__':
+    LandingPage()
 
         
 
