@@ -1,33 +1,31 @@
-class Budget():
-    db={}
-    def __init__(self, category, amount):
+class Budget:
+    bal = 0
+
+    def __init__(self, category):
         self.category = category
-        self.amount = amount
 
-    def deposit(self, amount, bal):
-        bal += amount
-        return bal
+    def deposit(self, amount):
+        self.bal += amount
+        return self.bal
 
-    def withdraw(self, amount, bal):
-        bal -= amount
-        return bal
+    def withdraw(self, amount):
+        self.bal -= amount
+        return self.bal
 
-    def balance(self, db):
-        for categ, bal in db.items():
-            print(categ, bal)
+    def balance(self):
+        return self.bal
 
-    def transfer(self,db, option1, amount, option2):
-        value1 = db[option1]
-        valuue2 = db[option2]
 
-        db[option1] = int(value1) - amount
-        db[option2] = int(valuue2) + amount
-        print('done')
-        return db
+def transfer(cat1, amount, cat2):
+    cat1.withdraw (amount)
+    cat2.deposit (amount)
+    print('The current balance of', cat1.category, 'is', cat1.balance(), 'and The new balance for', cat2.category,  'is',  cat2.balance())
 
-budget1 = Budget("Food", 20000)
-budget2=Budget('Clothe', 5000)
 
-budget2.transfer('Food', 1000,  'Clothe')
+budget1 = Budget ("Food")
+budget2 = Budget ('Clothe')
+budget2.deposit (1000)
+budget1.deposit(3000)
 
-print(budget2.category)
+
+transfer (budget1, 500, budget2)
