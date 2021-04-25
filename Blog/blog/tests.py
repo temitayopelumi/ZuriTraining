@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-import models
+from blog.models import Post
 
 
 class BlogTests (TestCase):
@@ -11,14 +11,14 @@ class BlogTests (TestCase):
             email='test@gmail.com',
             password='secret'
         )
-        self.post = models.Post.objects.create (
+        self.post = Post.objects.create (
             title='A good title',
             body='Nice body',
             author=self.user
         )
 
     def test_string_representation (self):
-        post = models.Post (title='A simple title')
+        post = Post (title='A simple title')
         self.assertEqual (str (post), post.title)
 
     def test_post_content (self):

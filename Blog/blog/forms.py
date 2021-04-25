@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserProfileInfo
+from .models import UserProfileInfo, Comment
 
-class NewUserForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+
+class NewUserForm (UserCreationForm):
+    email = forms.EmailField (required=True)
 
     class Meta:
         model = User
@@ -19,7 +20,12 @@ class NewUserForm(UserCreationForm):
 
 
 class UserProfileInfoForm (forms.ModelForm):
-    class Meta ():
+    class Meta:
         model = UserProfileInfo
         fields = ()
 
+
+class CommentForm (forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
